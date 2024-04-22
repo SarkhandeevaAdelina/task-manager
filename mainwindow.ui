@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1132</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(198, 225, 233);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>681</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Приветствую! Это заготовка приложения для менеджера задач на Qt, собранная на Cmake.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>140</y>
+      <width>1081</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Создание задач: пользователи могут создавать новые задачи, указывая их название, описание, дату и время выполнения, а также добавлять теги и напоминания.
+
+Списки задач: пользователи могут создавать различные списки задач, например, &quot;Работа&quot;, &quot;Личные дела&quot;, &quot;Покупки&quot; и т.д., и добавлять в них свои задачи.
+Управление задачами: пользователи могут редактировать, перемещать, удалять и отмечать задачи как выполненные.
+
+Напоминания: пользователи могут настроить напоминания для своих задач, которые будут отображаться в указанное время.
+
+Теги: пользователи могут добавлять теги к своим задачам, чтобы легко находить их позже.
+
+Фильтры: пользователи могут фильтровать свои задачи по различным критериям, таким как дата выполнения, теги, списки и т.д.
+
+Умные списки: Microsoft To-Do предлагает умные списки, такие как &quot;Мои день&quot; и &quot;Важное&quot;, которые автоматически создаются на основе задач пользователя.
+
+Настройка внешнего вида: пользователи могут настроить внешний вид приложения, выбирая тему, цвет и изображение фона.
+
+Поиск: пользователи могут искать свои задачи по ключевым словам, тегам, спискам и т.д.</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1132</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Менеджер задач</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
