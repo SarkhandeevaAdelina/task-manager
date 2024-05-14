@@ -15,16 +15,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void onTaskDeleted(TaskWidget *task);
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QList<TaskWidget*> tasks;
+    QList<TaskWidget*>* tasks;
     QString fileName;
 
     void loadTasks();
     void saveTasks();
-    void onTaskDeleted(TaskWidget *task);
-    void on_pushButton_clicked();
-
 };
 #endif // MAINWINDOW_H

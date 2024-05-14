@@ -7,6 +7,7 @@
 
 TaskWidget::TaskWidget(const QString &text, const QString &time, QWidget *parent, QList<TaskWidget*> *tasks)
     : QWidget(parent)
+    , tasks(tasks)
 {
     checkBox = new QCheckBox(this);
     checkBox->setIconSize(QSize(50, 50));
@@ -37,10 +38,6 @@ TaskWidget::TaskWidget(const QString &text, const QString &time, QWidget *parent
     layout->setContentsMargins(0, 0, 0, 0);
 
     connect(deleteButton, &QPushButton::clicked, this, &TaskWidget::onDeleteButtonClicked);
-
-    if (tasks) {
-        tasks->append(this);
-    }
 }
 
 QString TaskWidget::getText() const
@@ -65,57 +62,12 @@ void TaskWidget::onDeleteButtonClicked()
 
 void TaskWidget::removeTask()
 {
-    int index = tasks->indexOf(this);
-    if (index != -1) {
-        tasks->removeAt(index);
-        delete this;
-    }
+    tasks->removeOne(this);
+    deleteLater();
+    emit deleted(this);
 }
 
 void TaskWidget::setChecked(bool checked)
 {
     checkBox->setChecked(checked);
-}
-
-
-void TaskWidget::loadTasks()
-{
-    QFile file("tasks.json");
-
-    if (file.exists()) {
-        QByteArray jsonData = file.readAll();
-        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
-        QJsonArray jsonArray = jsonDoc.array();
-        file.close();
-
-        for (const QJsonValue &value : jsonArray) {
-            QJsonObject jsonObject = value.toObject();
-            QString text = jsonObject["text"].toString();
-            QString time = jsonObject["time"].toString();
-            bool checked = jsonObject["checked"].toBool();
-
-            TaskWidget *task = new TaskWidget(text, time, this, tasks);
-            task->setChecked(checked);
-            layout->insertWidget(1, task);
-        }
-    }
-}
-
-void TaskWidget::saveTasks()
-{
-    QJsonArray jsonArray;
-    for (TaskWidget *task : *tasks) {
-        QJsonObject jsonObject;
-        jsonObject["text"] = task->getText();
-        jsonObject["time"] = task->getTime();
-        jsonObject["checked"] = task->isChecked();
-        jsonArray.append(jsonObject);
-    }
-
-    QFile file("tasks.json");
-    if (file.open(QIODevice::WriteOnly)) {
-        QJsonDocument jsonDoc(jsonArray);
-        file.write(jsonDoc.toJson());
-        file.close();
-    }
 }

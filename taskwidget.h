@@ -12,16 +12,16 @@ class TaskWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit TaskWidget(const QString &text, const QString &time, QWidget *parent = nullptr, QList<TaskWidget*> *tasks = nullptr);
+    explicit TaskWidget(const QString &text, const QString &time, QWidget *parent = nullptr, QList<TaskWidget*>* tasks = nullptr);
 
     QString getText() const;
     QString getTime() const;
     bool isChecked() const;
 
-    void setChecked(bool checked);
     void removeTask();
     void loadTasks();
     void saveTasks();
+    void setChecked(bool checked);
 
 signals:
     void deleted(TaskWidget *task);
@@ -30,12 +30,12 @@ private slots:
     void onDeleteButtonClicked();
 
 private:
-    QList<TaskWidget*>* tasks;
     QCheckBox *checkBox;
     QLabel *textLabel;
     QLabel *timeLabel;
     QPushButton *deleteButton;
     QHBoxLayout *layout;
+    QList<TaskWidget*>* tasks;
 };
 
 #endif // TASKWIDGET_H
