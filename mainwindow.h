@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "taskwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +18,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QList<TaskWidget*> tasks;
+    QString fileName;
+
+    void loadTasks();
+    void saveTasks();
+    void onTaskDeleted(TaskWidget *task);
+    void on_pushButton_clicked();
+
 };
 #endif // MAINWINDOW_H
