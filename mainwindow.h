@@ -13,17 +13,27 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    // Конструктор класса MainWindow
     MainWindow(QWidget *parent = nullptr);
+
+    // Деструктор класса MainWindow
     ~MainWindow();
+
+    // Обработчик сигнала удаления задачи
     void onTaskDeleted(TaskWidget *task);
+
+    // Обработчик сигнала нажатия кнопки "Добавить"
     void on_pushButton_clicked();
 
 private:
-    Ui::MainWindow *ui;
-    QList<TaskWidget*>* tasks;
-    QString fileName;
+    Ui::MainWindow *ui;      // Указатель на графический интерфейс
+    QList<TaskWidget*>* tasks;  // Список указателей на виджеты задач
+    QString fileName;         // Имя файла для сохранения и загрузки задач
 
+    // Загрузка задач из файла
     void loadTasks();
+
+    // Сохранение задач в файл
     void saveTasks();
 };
 #endif // MAINWINDOW_H

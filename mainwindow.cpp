@@ -21,12 +21,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Загрузите задачи из файла
     loadTasks();
+
+    // Подключитесь к сигналу QApplication::aboutToQuit()
+    QObject::connect(qApp, &QApplication::aboutToQuit, this, &MainWindow::saveTasks);
 }
 
 MainWindow::~MainWindow()
 {
-    // Сохраните задачи в файл перед закрытием приложения
-    saveTasks();
 
     delete ui;
 }
@@ -90,10 +91,11 @@ void MainWindow::saveTasks()
         qWarning() << "Не удалось открыть файл задач для записи: " << file.errorString();
         return;
     }
-
     file.write(data);
     file.close();
+    qApp->processEvents();
 }
+
 
 void MainWindow::onTaskDeleted(TaskWidget *task)
 {
@@ -103,37 +105,11 @@ void MainWindow::onTaskDeleted(TaskWidget *task)
         if (widget == task) {
             delete item;
             delete task;
+            tasks->removeOne(task); // удаляем элемент из списка tasks
             return;
         }
     }
 }
-
-
-//void MainWindow::on_pushButton_clicked()
-//{
-//    qDebug() << "Button clicked";
-
-//    QString text = ui->lineEdit->text();
-//    QDateTime dateTime = ui->dateTimeEdit->dateTime();
-
-//    if (!text.isEmpty())
-//    {
-//        TaskWidget *task = new TaskWidget(text, dateTime.toString("hh:mm dd.MM.yyyy"), this, tasks);
-//        task->setChecked(false);
-
-//        //QListWidgetItem* item = new QListWidgetItem(ui->listWidget);
-//        QListWidgetItem* item = new QListWidgetItem();
-
-//        item->setSizeHint(task->sizeHint());
-//        ui->listWidget->addItem(item);
-//        ui->listWidget->setItemWidget(item, task);
-
-//        connect(task, &TaskWidget::deleted, this, &MainWindow::onTaskDeleted);
-
-//        ui->lineEdit->clear();
-//        ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
-//    }
-//}
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -153,6 +129,9 @@ void MainWindow::on_pushButton_clicked()
         ui->listWidget->setItemWidget(item, task);
 
         connect(task, &TaskWidget::deleted, this, &MainWindow::onTaskDeleted);
+
+        // Добавляем задачу в список tasks
+        tasks->append(task);
 
         ui->lineEdit->clear();
         ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
