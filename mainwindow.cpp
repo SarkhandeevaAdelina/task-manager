@@ -31,41 +31,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//void MainWindow::loadTasks()
-//{
-//    QFile file(fileName);
-//    if (!file.open(QIODevice::ReadOnly)) {
-//        qWarning() << "Не удалось открыть файл задач для чтения: " << file.errorString();
-//        return;
-//    }
-
-//    QByteArray data = file.readAll();
-//    file.close();
-
-//    QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-//    if (jsonDoc.isNull()) {
-//        qWarning() << "Не удалось распарсить файл задач: " << file.errorString();
-//        return;
-//    }
-
-//    QJsonArray jsonArray = jsonDoc.array();
-//    for (const QJsonValue &value : jsonArray) {
-//        QJsonObject jsonObject = value.toObject();
-
-//        QString text = jsonObject["text"].toString();
-//        QString time = jsonObject["time"].toString();
-//        bool checked = jsonObject["checked"].toBool();
-
-//        TaskWidget *task = new TaskWidget(text, time, this, tasks);
-//        task->setChecked(checked);
-
-//        QListWidgetItem* item = new QListWidgetItem(ui->listWidget);
-//        item->setSizeHint(task->sizeHint());
-//        ui->listWidget->addItem(item);
-//        ui->listWidget->setItemWidget(item, task);
-//    }
-//}
-
 void MainWindow::loadTasks()
 {
     QFile file(fileName);
@@ -129,19 +94,6 @@ void MainWindow::saveTasks()
     file.write(data);
     file.close();
 }
-
-//void MainWindow::onTaskDeleted(TaskWidget *task)
-//{
-//    for (int i = 0; i < ui->listWidget->count(); ++i) {
-//        QListWidgetItem *item = ui->listWidget->item(i);
-//        QWidget *widget = ui->listWidget->itemWidget(item);
-//        if (widget == task) {
-//            delete item;
-//            delete task;
-//            return;
-//        }
-//    }
-//}
 
 void MainWindow::onTaskDeleted(TaskWidget *task)
 {
