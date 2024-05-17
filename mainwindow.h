@@ -25,6 +25,15 @@ public:
     // Обработчик сигнала нажатия кнопки "Добавить"
     void on_pushButton_clicked();
 
+private slots:
+    void on_pushButtonFind_clicked();
+
+    void on_pushButtonToday_clicked();
+
+    void on_pushButtonImportant_clicked();
+
+    void on_pushButtonAll_clicked();
+
 private:
     Ui::MainWindow *ui;      // Указатель на графический интерфейс
     QList<TaskWidget*>* tasks;  // Список указателей на виджеты задач

@@ -6,13 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1005</width>
-    <height>600</height>
+    <width>1100</width>
+    <height>611</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1100</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1005</width>
+    <width>16777215</width>
     <height>16777215</height>
    </size>
   </property>
@@ -24,45 +30,114 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="3" column="2">
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton">
+    <item row="2" column="3" colspan="6">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLineEdit" name="lineEditFind">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>80</height>
+          <height>45</height>
          </size>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>18</pointsize>
-         </font>
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
+        <property name="placeholderText">
+         <string>Поиск</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonFind">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>Ввод</string>
+         <string>Поиск</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="1" column="2" rowspan="2">
-     <layout class="QVBoxLayout" name="verticalLayout_4"/>
+    <item row="1" column="11">
+     <layout class="QVBoxLayout" name="verticalLayout"/>
     </item>
-    <item row="3" column="0">
+    <item row="3" column="9">
+     <widget class="QListWidget" name="listWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(245, 245, 255);
+border-radius: 20px;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="10">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3" colspan="6">
      <layout class="QVBoxLayout" name="verticalLayout_2">
-      <property name="spacing">
-       <number>6</number>
-      </property>
-      <property name="sizeConstraint">
-       <enum>QLayout::SetMaximumSize</enum>
-      </property>
-      <property name="bottomMargin">
-       <number>10</number>
-      </property>
+      <item>
+       <widget class="QPushButton" name="pushButtonToday">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Сегодня</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonImportant">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Важное</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonAll">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Все задачи</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="9">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLineEdit" name="lineEdit">
         <property name="sizePolicy">
@@ -89,12 +164,15 @@
           <stylestrategy>PreferAntialias</stylestrategy>
          </font>
         </property>
+        <property name="acceptDrops">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(250, 250, 255);
 border-radius: 20px;</string>
         </property>
         <property name="inputMethodHints">
-         <set>Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText</set>
+         <set>Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
         </property>
         <property name="inputMask">
          <string/>
@@ -116,10 +194,6 @@ border-radius: 20px;</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item row="3" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <widget class="QDateTimeEdit" name="dateTimeEdit">
         <property name="minimumSize">
@@ -150,24 +224,24 @@ border-radius: 20px;</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout"/>
-    </item>
-    <item row="4" column="0" colspan="3">
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
-      <property name="topMargin">
-       <number>5</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QListWidget" name="listWidget">
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(245, 245, 255);
-border-radius: 20px;</string>
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Ввод</string>
         </property>
        </widget>
       </item>
@@ -180,7 +254,7 @@ border-radius: 20px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1005</width>
+     <width>1100</width>
      <height>22</height>
     </rect>
    </property>
