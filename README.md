@@ -2,13 +2,13 @@
 ## Ubuntu 
 ### Установка
 
-1) Откройте терминал и обновите список пакетов:
+1) Откройте терминал и сделайте файл dependencies.sh исполняемым.
 ```
-sudo apt-get update
+chmod +x dependencies.sh
 ```
-2) Установите необходимые зависимости:
+2) Запустите его. Он запустит скачивание необходимых зависимостей.
 ```
-sudo apt-get install build-essential libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-glx0-dev qtbase5-dev qtdeclarative5-dev qttools5-dev qttools5-dev-tools qtcreator
+./dependencies.sh
 ```
 3) Скачайте репозиторий (либо zip-файлом, либо через команду в терминале).
 ```
