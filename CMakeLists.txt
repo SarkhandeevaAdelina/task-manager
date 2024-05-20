@@ -17,16 +17,23 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
 
 set(TS_FILES ToDoList_ru_RU.ts)
 
+set(HEADER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/headers)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
+
+# Add include directories
+include_directories(${HEADER_DIR})
+
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        taskwidget.h
-        taskwidget.cpp
-        tasks.json
+        source/main.cpp
+        source/mainwindow.cpp
+        headers/mainwindow.h
+        ui/mainwindow.ui
+        headers/taskwidget.h
+        source/taskwidget.cpp
+        json/tasks.json
         ${TS_FILES}
 )
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ToDoList
